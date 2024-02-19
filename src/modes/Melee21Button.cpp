@@ -22,6 +22,16 @@ void Melee21Button::HandleSocd(InputState &inputs) {
     InputMode::HandleSocd(inputs);
 }
 
+bool Melee21Button::isDPadLayerActive(InputState &inputs) {
+    //when Mod Z = DPad left, Mod X + Mod Y gives DPad layer
+    if(_options.use_modZ_dpad_left) {
+        return (inputs.mod_x && inputs.mod_y) || inputs.nunchuk_c
+    }
+    //otherwise Mod Z gives DPad layer
+    else {
+        return (inputs.mod_z || inputs.nunchuk_c);
+}
+
 void Melee21Button::UpdateDigitalOutputs(InputState &inputs, OutputState &outputs) {
     outputs.a = inputs.a;
     outputs.b = inputs.b;
@@ -36,8 +46,8 @@ void Melee21Button::UpdateDigitalOutputs(InputState &inputs, OutputState &output
     outputs.triggerRDigital = inputs.r;
     outputs.start = inputs.start;
 
-    // Activate D-Pad layer by holding Mod Z or Nunchuk C button.
-    if ((inputs.mod_z) || inputs.nunchuk_c) {
+    // Activate D-Pad layer depending on options
+    if (isDpadLayerActive(inputs)) {
         outputs.dpadUp = inputs.c_up;
         outputs.dpadDown = inputs.c_down;
         outputs.dpadLeft = inputs.c_left;
@@ -267,7 +277,7 @@ void Melee21Button::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs
     }
 
     // Shut off C-stick when using D-Pad layer.
-    if ((inputs.mod_z) || inputs.nunchuk_c) {
+    if (isDpadLayerActive(inputs)) {
         outputs.rightStickX = 128;
         outputs.rightStickY = 128;
     }

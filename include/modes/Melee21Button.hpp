@@ -7,6 +7,7 @@
 
 typedef struct {
     bool crouch_walk_os = false;
+    bool use_modZ_dpad_left = false;
 } Melee21ButtonOptions;
 
 class Melee21Button : public ControllerMode {
@@ -22,6 +23,7 @@ class Melee21Button : public ControllerMode {
     bool _horizontal_socd;
 
     void HandleSocd(InputState &inputs);
+    bool isDPadLayerActive(InputState &inputs);
 };
 
 #endif
