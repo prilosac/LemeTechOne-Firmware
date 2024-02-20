@@ -7,7 +7,7 @@
 
 typedef struct {
     bool crouch_walk_os = false;
-    bool use_modZ_dpad_left = false;
+    bool mod_z_dpad_left = false;
 } Melee21ButtonOptions;
 
 class Melee21Button : public ControllerMode {

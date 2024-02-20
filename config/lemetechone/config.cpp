@@ -140,20 +140,19 @@ void setup() {
     }
 
     bool use_crouchwalk = false;
-    bool use_modZ_dpad_left = false;
+    bool use_mod_z_dpad_left = false;
 
     if (button_holds.down) {
         use_crouchwalk = !use_crouchwalk;
     }
 
     if (button_holds.mod_z) {
-        use_modZ_dpad_left = !use_modZ_dpad_left;
+        use_mod_z_dpad_left = !use_mod_z_dpad_left;
     }
 
     // Default to Melee mode.
     primary_backend->SetGameMode(
-        new Melee21Button(socd::SOCD_NEUTRAL, { .crouch_walk_os = use_crouchwalk, 
-                                                .mod_z_dpad_left = use_modZ_dpad_left }));
+        new Melee21Button(socd::SOCD_NEUTRAL, { .crouch_walk_os = use_crouchwalk, .mod_z_dpad_left = use_mod_z_dpad_left }));
 }
 
 void loop() {
