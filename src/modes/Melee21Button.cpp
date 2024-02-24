@@ -90,7 +90,7 @@ void Melee21Button::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs
         outputs
     );
 
-    //bool shield_button_pressed = inputs.l || inputs.r || inputs.lightshield || inputs.midshield;
+    bool shield_button_pressed = inputs.l || inputs.r || inputs.lightshield || inputs.midshield;
     bool dpad_layer_active = isDPadLayerActive(inputs);
     if (directions.diagonal) {
         // q1/2 = 7000 7000
@@ -99,8 +99,7 @@ void Melee21Button::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs
         // L, R, LS, and MS + q3/4 = 7000 6875 (For vanilla shield drop. Gives 44.5
         // degree wavedash). Also used as default q3/4 diagonal if crouch walk option select is
         // enabled.
-        //if (directions.y == -1 && (shield_button_pressed || _options.crouch_walk_os)) {
-        if (directions.y == -1 && _options.crouch_walk_os) {
+        if (directions.y == -1 && (shield_button_pressed || _options.crouch_walk_os)) {
             outputs.leftStickX = 128 + (directions.x * 61);
             outputs.leftStickY = 128 + (directions.y * 56);
         }
@@ -232,12 +231,6 @@ void Melee21Button::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs
                 }
             }
         }
-        else { // all modifiers are the same
-            if(inputs.start) {
-                
-            }
-        }
-
     }
     else { // non-pairwise / legacy
         if (inputs.mod_x != inputs.mod_y) {
@@ -252,14 +245,14 @@ void Melee21Button::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs
                 if (directions.vertical) {
                     outputs.leftStickY = 128 + (directions.y * 42);
                 }
-                //if (directions.diagonal && shield_button_pressed) {
-                //    // MX + L, R, LS, and MS + q1/2/3/4 = 6375 3750 = 51 30
-                //    outputs.leftStickX = 128 + (directions.x * 51);
-                //    outputs.leftStickY = 128 + (directions.y * 30);
-                //}
+                if (directions.diagonal && shield_button_pressed) {
+                    // MX + L, R, LS, and MS + q1/2/3/4 = 6375 3750 = 51 30
+                    outputs.leftStickX = 128 + (directions.x * 51);
+                    outputs.leftStickY = 128 + (directions.y * 30);
+                }
 
                 /* Up B angles */
-                if (directions.diagonal) {
+                if (directions.diagonal && !shield_button_pressed) {
                     // 22.9638 - 7375 3125 = 59 25
                     outputs.leftStickX = 128 + (directions.x * 59);
                     outputs.leftStickY = 128 + (directions.y * 25);
@@ -338,16 +331,16 @@ void Melee21Button::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs
                 if (directions.vertical) {
                     outputs.leftStickY = 128 + (directions.y * 59);
                 }
-                //if (directions.diagonal && shield_button_pressed) {
-                //    // MY + L, R, LS, and MS + q1/2 = 4750 8750 = 38 70
-                //    outputs.leftStickX = 128 + (directions.x * 38);
-                //    outputs.leftStickY = 128 + (directions.y * 70);
-                //    // MY + L, R, LS, and MS + q3/4 = 5000 8500 = 40 68
-                //    if (directions.y == -1) {
-                //        outputs.leftStickX = 128 + (directions.x * 40);
-                //        outputs.leftStickY = 128 + (directions.y * 68);
-                //    }
-                //}
+                if (directions.diagonal && shield_button_pressed) {
+                    // MY + L, R, LS, and MS + q1/2 = 4750 8750 = 38 70
+                    outputs.leftStickX = 128 + (directions.x * 38);
+                    outputs.leftStickY = 128 + (directions.y * 70);
+                    // MY + L, R, LS, and MS + q3/4 = 5000 8500 = 40 68
+                    if (directions.y == -1) {
+                        outputs.leftStickX = 128 + (directions.x * 40);
+                        outputs.leftStickY = 128 + (directions.y * 68);
+                    }
+                }
 
                 // Turnaround neutral B nerf
                 if (inputs.b) {
@@ -355,7 +348,7 @@ void Melee21Button::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs
                 }
 
                 /* Up B angles */
-                if (directions.diagonal) {
+                if (directions.diagonal && !shield_button_pressed) {
                     // 67.0362 - 3125 7375 = 25 59
 					// 3250 7625 - 23.09deg - 26 61 - modY + cDown
                     // 3625 7000 - 27.38deg - 29 56 - modY
