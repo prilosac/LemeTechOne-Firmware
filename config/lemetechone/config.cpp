@@ -141,18 +141,27 @@ void setup() {
 
     bool use_crouchwalk = false;
     bool use_mod_z_dpad_left = false;
+    bool use_pairwise_modifiers = true;
 
     if (button_holds.down) {
         use_crouchwalk = !use_crouchwalk;
     }
-
-    if (button_holds.mod_z) {
-        use_mod_z_dpad_left = !use_mod_z_dpad_left;
+    if (button_holds.mod_x && button_holds.mod_y) {
+        use_pairwise_modifiers = !use_pairwise_modifiers;
+    }
+    // modZ = dpad left doesn't make sense w/ pairwise modifiers
+    if (use_pairwise_modifiers) {
+        use_mod_z_dpad_left = false;
+    }
+    else {
+        if (button_holds.mod_z) {
+            use_mod_z_dpad_left = !use_mod_z_dpad_left;
+        }
     }
 
     // Default to Melee mode.
     primary_backend->SetGameMode(
-        new Melee21Button(socd::SOCD_NEUTRAL, { .crouch_walk_os = use_crouchwalk, .mod_z_dpad_left = use_mod_z_dpad_left }));
+        new Melee21Button(socd::SOCD_NEUTRAL, { .crouch_walk_os = use_crouchwalk, .mod_z_dpad_left = use_mod_z_dpad_left, .pairwise_modifiers = use_pairwise_modifiers }));
 }
 
 void loop() {

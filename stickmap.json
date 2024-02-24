@@ -1,0 +1,170 @@
+[
+    {
+        "name": "ModY + ModZ",
+        "color": [
+            255,
+            255,
+            255,
+            255
+        ],
+        "quadrants": [
+            true,
+            false,
+            false,
+            false
+        ],
+        "displayMode": 0,
+        "minX": 0,
+        "minY": 0,
+        "maxX": 80,
+        "maxY": 80,
+        "angleMin": 66.91,
+        "angleMax": 66.91,
+        "magnitudeMin": 0,
+        "magnitudeMax": 80
+    },
+    {
+        "name": "ModY",
+        "color": [
+            255,
+            255,
+            255,
+            255
+        ],
+        "quadrants": [
+            true,
+            false,
+            false,
+            false
+        ],
+        "displayMode": 0,
+        "minX": 0,
+        "minY": 0,
+        "maxX": 80,
+        "maxY": 80,
+        "angleMin": 62.62,
+        "angleMax": 62.62,
+        "magnitudeMin": 0,
+        "magnitudeMax": 80
+    },
+    {
+        "name": "ModZ",
+        "color": [
+            255,
+            255,
+            255,
+            255
+        ],
+        "quadrants": [
+            true,
+            false,
+            false,
+            false
+        ],
+        "displayMode": 0,
+        "minX": 0,
+        "minY": 0,
+        "maxX": 80,
+        "maxY": 80,
+        "angleMin": 53.79,
+        "angleMax": 53.79,
+        "magnitudeMin": 0,
+        "magnitudeMax": 80
+    },
+    {
+        "name": "No Mods",
+        "color": [
+            255,
+            255,
+            255,
+            255
+        ],
+        "quadrants": [
+            true,
+            false,
+            false,
+            false
+        ],
+        "displayMode": 0,
+        "minX": 0,
+        "minY": 0,
+        "maxX": 80,
+        "maxY": 80,
+        "angleMin": 45,
+        "angleMax": 45,
+        "magnitudeMin": 0,
+        "magnitudeMax": 80
+    },
+    {
+        "name": "ModX + ModY",
+        "color": [
+            255,
+            255,
+            255,
+            255
+        ],
+        "quadrants": [
+            true,
+            false,
+            false,
+            false
+        ],
+        "displayMode": 0,
+        "minX": 0,
+        "minY": 0,
+        "maxX": 80,
+        "maxY": 80,
+        "angleMin": 35.96,
+        "angleMax": 35.96,
+        "magnitudeMin": 0,
+        "magnitudeMax": 80
+    },
+    {
+        "name": "ModX",
+        "color": [
+            255,
+            255,
+            255,
+            255
+        ],
+        "quadrants": [
+            true,
+            false,
+            false,
+            false
+        ],
+        "displayMode": 0,
+        "minX": 0,
+        "minY": 0,
+        "maxX": 80,
+        "maxY": 80,
+        "angleMin": 27.41,
+        "angleMax": 27.41,
+        "magnitudeMin": 0,
+        "magnitudeMax": 80
+    },
+    {
+        "name": "ModX + ModZ",
+        "color": [
+            255,
+            255,
+            255,
+            255
+        ],
+        "quadrants": [
+            true,
+            false,
+            false,
+            false
+        ],
+        "displayMode": "0",
+        "minX": 0,
+        "minY": 0,
+        "maxX": 80,
+        "maxY": 80,
+        "angleMin": 22.96,
+        "angleMax": 22.96,
+        "magnitudeMin": 0,
+        "magnitudeMax": 80
+    }
+]
