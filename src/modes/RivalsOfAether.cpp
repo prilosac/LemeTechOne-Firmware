@@ -4,7 +4,7 @@
 #define ANALOG_STICK_NEUTRAL 128
 #define ANALOG_STICK_MAX 228
 
-RivalsOfAether::RivalsOfAether(socd::SocdType socd_type) {
+RivalsOfAether::RivalsOfAether(socd::SocdType socd_type, RivalsOfAetherOptions options/*= {} */) {
     _socd_pair_count = 4;
     _socd_pairs = new socd::SocdPair[_socd_pair_count]{
         socd::SocdPair{&InputState::left,    &InputState::right,   socd_type},
@@ -12,6 +12,19 @@ RivalsOfAether::RivalsOfAether(socd::SocdType socd_type) {
         socd::SocdPair{ &InputState::c_left, &InputState::c_right, socd_type},
         socd::SocdPair{ &InputState::c_down, &InputState::c_up,    socd_type},
     };
+
+    _options = options;
+}
+
+bool RivalsOfAether::isDPadLayerActive(InputState &inputs) {
+    //when Mod Z = DPad left, Mod X + Mod Y gives DPad layer
+    if(_options.mod_z_dpad_left) {
+        return (inputs.mod_x && inputs.mod_y);
+    }
+    //otherwise Mod Z gives DPad layer
+    else {
+        return inputs.mod_z;
+    }
 }
 
 void RivalsOfAether::UpdateDigitalOutputs(InputState &inputs, OutputState &outputs) {
@@ -37,12 +50,15 @@ void RivalsOfAether::UpdateDigitalOutputs(InputState &inputs, OutputState &outpu
     outputs.rightStickClick = inputs.midshield;
 
     // Activate D-Pad layer by holding Mod X + Mod Y.
-    if (inputs.mod_x && inputs.mod_y) {
+    if (isDPadLayerActive(inputs)) {
         outputs.dpadUp = inputs.c_up;
         outputs.dpadDown = inputs.c_down;
         outputs.dpadLeft = inputs.c_left;
         outputs.dpadRight = inputs.c_right;
     }
+
+    if (_options.mod_z_dpad_left && inputs.mod_z)
+        outputs.dpadLeft = true;
 }
 
 void RivalsOfAether::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs) {
@@ -63,7 +79,7 @@ void RivalsOfAether::UpdateAnalogOutputs(InputState &inputs, OutputState &output
     );
 
     bool shield_button_pressed = inputs.l || inputs.r;
-
+    bool dpad_layer_active = isDPadLayerActive(inputs);
 
     // 48 total DI angles, 24 total Up b angles, 16 total airdodge angles
 
@@ -152,7 +168,7 @@ void RivalsOfAether::UpdateAnalogOutputs(InputState &inputs, OutputState &output
     }
 
     // Shut off C-stick when using D-Pad layer.
-    if (inputs.mod_x && inputs.mod_y) {
+    if (isDPadLayerActive(inputs)) {
         outputs.rightStickX = 128;
         outputs.rightStickY = 128;
     }

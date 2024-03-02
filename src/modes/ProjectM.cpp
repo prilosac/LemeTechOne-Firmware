@@ -22,6 +22,17 @@ void ProjectM::HandleSocd(InputState &inputs) {
     InputMode::HandleSocd(inputs);
 }
 
+bool ProjectM::isDPadLayerActive(InputState &inputs) {
+    //when Mod Z = DPad left, Mod X + Mod Y gives DPad layer
+    if(_options.mod_z_dpad_left) {
+        return (inputs.mod_x && inputs.mod_y) || inputs.nunchuk_c;
+    }
+    //otherwise Mod Z gives DPad layer
+    else {
+        return (inputs.mod_z || inputs.nunchuk_c);
+    }
+}
+
 void ProjectM::UpdateDigitalOutputs(InputState &inputs, OutputState &outputs) {
     outputs.a = inputs.a;
     outputs.b = inputs.b;
@@ -42,7 +53,7 @@ void ProjectM::UpdateDigitalOutputs(InputState &inputs, OutputState &outputs) {
     outputs.start = inputs.start;
 
     // Activate D-Pad layer by holding Mod X + Mod Y or Nunchuk C button.
-    if ((inputs.mod_x && inputs.mod_y) || inputs.nunchuk_c) {
+    if (isDPadLayerActive(inputs)) {
         outputs.dpadUp = inputs.c_up;
         outputs.dpadDown = inputs.c_down;
         outputs.dpadLeft = inputs.c_left;
@@ -53,7 +64,7 @@ void ProjectM::UpdateDigitalOutputs(InputState &inputs, OutputState &outputs) {
     // layer.
     outputs.dpadUp = outputs.dpadUp || inputs.midshield;
 
-    if (inputs.select)
+    if (inputs.select || (_options.mod_z_dpad_left && inputs.mod_z))
         outputs.dpadLeft = true;
     if (inputs.home)
         outputs.dpadRight = true;
@@ -76,6 +87,7 @@ void ProjectM::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs) {
     );
 
     bool shield_button_pressed = inputs.l || inputs.lightshield;
+    bool dpad_layer_active = isDPadLayerActive(inputs);
 
     if (directions.diagonal) {
         if (directions.y == 1) {
@@ -212,7 +224,7 @@ void ProjectM::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs) {
     }
 
     // Shut off C-stick when using D-Pad layer.
-    if ((inputs.mod_x && inputs.mod_y) || inputs.nunchuk_c) {
+    if (dpad_layer_active) {
         outputs.rightStickX = 128;
         outputs.rightStickY = 128;
     }

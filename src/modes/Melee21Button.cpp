@@ -92,6 +92,7 @@ void Melee21Button::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs
 
     bool shield_button_pressed = inputs.l || inputs.r || inputs.lightshield || inputs.midshield;
     bool dpad_layer_active = isDPadLayerActive(inputs);
+
     if (directions.diagonal) {
         // q1/2 = 7000 7000
         outputs.leftStickX = 128 + (directions.x * 56);

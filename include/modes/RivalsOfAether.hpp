@@ -5,13 +5,20 @@
 #include "core/socd.hpp"
 #include "core/state.hpp"
 
+typedef struct {
+    bool mod_z_dpad_left = false;
+} RivalsOfAetherOptions;
+
 class RivalsOfAether : public ControllerMode {
   public:
-    RivalsOfAether(socd::SocdType socd_type);
+    RivalsOfAether(socd::SocdType socd_type, RivalsOfAetherOptions options = {});
 
   private:
+    RivalsOfAetherOptions _options;
+
     void UpdateDigitalOutputs(InputState &inputs, OutputState &outputs);
     void UpdateAnalogOutputs(InputState &inputs, OutputState &outputs);
+    bool isDPadLayerActive(InputState &inputs);
 };
 
 #endif

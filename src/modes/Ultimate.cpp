@@ -5,7 +5,7 @@
 #define ANALOG_STICK_NEUTRAL 128
 #define ANALOG_STICK_MAX 228
 
-Ultimate::Ultimate(socd::SocdType socd_type) {
+Ultimate::Ultimate(socd::SocdType socd_type, UltimateOptions options/*= {} */) {
     _socd_pair_count = 4;
     _socd_pairs = new socd::SocdPair[_socd_pair_count]{
         socd::SocdPair{&InputState::left,    &InputState::right,   socd_type},
@@ -13,6 +13,19 @@ Ultimate::Ultimate(socd::SocdType socd_type) {
         socd::SocdPair{ &InputState::c_left, &InputState::c_right, socd_type},
         socd::SocdPair{ &InputState::c_down, &InputState::c_up,    socd_type},
     };
+
+    _options = options;
+}
+
+bool Ultimate::isDPadLayerActive(InputState &inputs) {
+    //when Mod Z = DPad left, Mod X + Mod Y gives DPad layer
+    if(_options.mod_z_dpad_left) {
+        return (inputs.mod_x && inputs.mod_y) || inputs.nunchuk_c;
+    }
+    //otherwise Mod Z gives DPad layer
+    else {
+        return (inputs.mod_z || inputs.nunchuk_c);
+    }
 }
 
 void Ultimate::UpdateDigitalOutputs(InputState &inputs, OutputState &outputs) {
@@ -29,12 +42,15 @@ void Ultimate::UpdateDigitalOutputs(InputState &inputs, OutputState &outputs) {
     outputs.home = inputs.home;
 
     // Turn on D-Pad layer by holding Mod X + Mod Y or Nunchuk C button.
-    if ((inputs.mod_x && inputs.mod_y) || inputs.nunchuk_c) {
+    if (isDPadLayerActive(inputs)) {
         outputs.dpadUp = inputs.c_up;
         outputs.dpadDown = inputs.c_down;
         outputs.dpadLeft = inputs.c_left;
         outputs.dpadRight = inputs.c_right;
     }
+
+    if (_options.mod_z_dpad_left && inputs.mod_z)
+        outputs.dpadLeft = true;
 }
 
 void Ultimate::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs) {
@@ -55,6 +71,7 @@ void Ultimate::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs) {
     );
 
     bool shield_button_pressed = inputs.l || inputs.r;
+    bool dpad_layer_active = isDPadLayerActive(inputs);
 
     if (inputs.mod_x) {
         // MX + Horizontal = 6625 = 53
@@ -266,7 +283,7 @@ void Ultimate::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs) {
     }
 
     // Shut off C-stick when using D-Pad layer.
-    if ((inputs.mod_x && inputs.mod_y) || inputs.nunchuk_c) {
+    if (dpad_layer_active) {
         outputs.rightStickX = 128;
         outputs.rightStickY = 128;
     }

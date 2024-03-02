@@ -8,6 +8,7 @@
 typedef struct {
     bool true_z_press = false;
     bool ledgedash_max_jump_traj = true;
+    bool mod_z_dpad_left = false;
 } ProjectMOptions;
 
 class ProjectM : public ControllerMode {
@@ -21,6 +22,7 @@ class ProjectM : public ControllerMode {
     void HandleSocd(InputState &inputs);
     void UpdateDigitalOutputs(InputState &inputs, OutputState &outputs);
     void UpdateAnalogOutputs(InputState &inputs, OutputState &outputs);
+    bool isDPadLayerActive(InputState &inputs);
 };
 
 #endif

@@ -107,7 +107,7 @@ void setup() {
             backends = new CommunicationBackend *[backend_count] { primary_backend };
 
             // Default to Ultimate mode on Switch.
-            primary_backend->SetGameMode(new Ultimate(socd::SOCD_2IP));
+            primary_backend->SetGameMode(new Ultimate(socd::SOCD_2IP, { .mod_z_dpad_left = false } ));
             return;
         } else if (button_holds.z) {
             // If no console detected and Z is held on plugin then use DInput backend.
