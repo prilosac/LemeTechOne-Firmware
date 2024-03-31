@@ -143,7 +143,7 @@ void setup() {
     bool use_mod_z_dpad_left = false;
     bool use_pairwise_modifiers = true;
 
-    if (button_holds.down) {
+    if (button_holds.up) {
         use_crouchwalk = !use_crouchwalk;
     }
     if (button_holds.mod_x && button_holds.mod_y) {
