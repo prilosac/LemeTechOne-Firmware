@@ -38,7 +38,7 @@ Our goal was to simplify angle access for techniques like Firefox while at the s
 
 This results in 7 levels of granularity per quadrant, all of which are easily accessible at all times. Compare this to other controllers, which provide 11 levels of granularity per quadrant with the C-stick, and 3 without it. We believe that using the C-stick for many techniques such as wavedash, while not impossible, is both awkward and more difficult than necessary, and find that the trade-off of a reasonable range of static options is preferable to more options in some situations and fewer options in others.
 
-![Angle Helper|center|360x540](https://github.com/prilosac/LemeTechOne-Firmware/blob/48f14a59e4a661f842977e94d02ef02927c6b9f3/img/angles.gif)
+![Angle Helper|center|360x540](/img/angles.gif)
 
 Note that in 3-mod mode, all 3 modifiers should be pressed to access the d-pad layer.
 
@@ -85,7 +85,7 @@ After plugging in the controller, use the following button holds to switch betwe
 | ModX + Start + B        | Rivals of Aether                             |
 | ModY + Start            | Keyboard (controller must be in DInput mode) |
 ## Remapping
-Remapping can be achieved by downloading the code, changing the mappings in `config/lemetechone/config.cpp`, building the firmware, and then following the instructions in [Reprogramming](#reprogramming). Instructions for building the firmware can be found [in the README](https://github.com/prilosac/LemeTechOne-Firmware/blob/master/README.md#building-from-source).
+Remapping can be achieved by downloading the code, changing the mappings in `config/lemetechone/config.cpp`, building the firmware, and then following the instructions in [Reprogramming](#reprogramming). Instructions for building the firmware can be found [in the README](README.md#building-from-source).
 
 If you do not feel comfortable doing this, please reach out and we will assist to the best of our ability, up to and including building you a custom version of the firmware with your preferred layout. We intend to improve this experience in the future.
 
@@ -99,7 +99,8 @@ Make sure you know what you are uploading to your controller to prevent any unex
 
 # Art layer
 
-![Art Example|center|480x528](https://github.com/prilosac/LemeTechOne-Firmware/blob/48f14a59e4a661f842977e94d02ef02927c6b9f3/img/artandglossymattedisplay.png)
+![Art Example|center|480x528](/img/artandglossymattedisplay.png)
+<img src="/img/artandglossymattedisplay.png" alt="Art Example" width="480"/>
 
 Your Leme Tech Zero features a clear top insert that can optionally act as a customizable art layer! Loosen the 5 bolts with a 3mm hex wrench, lift the clear panel, and place any art you desire under it before completing the steps in reverse to put it back.
 
