@@ -111,5 +111,5 @@ The following templates can be used to help plan out artwork without having to d
 
 Once you have your printed template(s), use it to plan your art before placing it under your controller's art layer
 
-![Art Template 1|center|360x540](https://github.com/prilosac/LemeTechOne-Firmware/blob/48f14a59e4a661f842977e94d02ef02927c6b9f3/img/angles.gif)
-![Art Template 2|center|360x540](https://github.com/prilosac/LemeTechOne-Firmware/blob/48f14a59e4a661f842977e94d02ef02927c6b9f3/img/angles.gif)
+![Art Template 1|center|360x540](/img/arttemplate1.png)
+![Art Template 2|center|360x540](/img/arttemplate2.png)
