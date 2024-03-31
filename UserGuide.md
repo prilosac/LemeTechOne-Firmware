@@ -39,12 +39,17 @@ Our goal was to simplify angle access for techniques like Firefox while at the s
 This results in 7 levels of granularity per quadrant, all of which are easily accessible at all times. Compare this to other controllers, which provide 11 levels of granularity per quadrant with the C-stick, and 3 without it. We believe that using the C-stick for many techniques such as wavedash, while not impossible, is both awkward and more difficult than necessary, and find that the trade-off of a reasonable range of static options is preferable to more options in some situations and fewer options in others.
 
 ![Angle Helper|center|360x540](https://github.com/prilosac/LemeTechOne-Firmware/blob/48f14a59e4a661f842977e94d02ef02927c6b9f3/img/angles.gif)
+
+Note that in 3-mod mode, all 3 modifiers should be pressed to access the d-pad layer.
+
 ## 2-modifier mode
 While this controller offers a new way to play Melee using 3 modifiers with pairwise interaction, some players may wish to use the 2-modifier layout more typical of this style of controller. To achieve this in Melee mode, hold both ModX and ModY when plugging in. You will then find yourself with default 2-modifier behaviour, with ModZ now acting as a dedicated d-pad toggle. This means that ModX and ModY remain availble for use while the d-pad layer is active.
 
 If you are already plugged in and wish to switch to 2-modifier Melee mode, hold ModX + Start + R. See [Game Logic](#Game-logic) for a full table of mode selection options.
 
 Note that if you want to use 2-modifier mode, Mod Z can be used as an additional button for whatever you want! For example, you could put one of your jump buttons on the thumb to help with techniques like Peach's hyperfloats. See [Remapping](#remapping) for more information.
+
+Additionally, any 2-modifier players that are also avid UnclePunch users may be happy to know that holding all 3 modifiers when plugging in will result in 2-modifier behaviour with ModZ acting as a dedicate D-pad left. In this mode, press all 3 modifiers to access the D-pad layer, like you would in 3-mod mode.
 
 ## Controller behavior
 There are multiple modes in which the controller can be used, as well as various options within many of the modes. There are two aspects to this:
@@ -94,8 +99,17 @@ Make sure you know what you are uploading to your controller to prevent any unex
 
 # Art layer
 
+![Art Example|center|480x528](https://github.com/prilosac/LemeTechOne-Firmware/blob/48f14a59e4a661f842977e94d02ef02927c6b9f3/img/artandglossymattedisplay.png)
+
 Your Leme Tech Zero features a clear top insert that can optionally act as a customizable art layer! Loosen the 5 bolts with a 3mm hex wrench, lift the clear panel, and place any art you desire under it before completing the steps in reverse to put it back.
 
 Be aware that the bolts go all the way through to the bottom of the case and connect with nuts to hold the bottom plate in place too, so don't be alarmed if the bottom panel shifts slightly while you do this. Make sure to slot the nuts back through the bottom panel to ensure a snug fit before re-tightening.
 
-![Art Example|center|480x528](https://github.com/prilosac/LemeTechOne-Firmware/blob/48f14a59e4a661f842977e94d02ef02927c6b9f3/img/artandglossymattedisplay.png)
+The following templates can be used to help plan out artwork without having to do so on the controller itself. If printed full-size on a sheet of 8.5" x 11" paper, these templates will line up real-size with the controller. Unfortunately this means the template had to be split in two since the controller is a bit larger than regular printer paper. We recommend one of two options:
+1) Since each template still covers the majority of the controller, fit all your art within one of the templates and use just that one
+2) Print both templates and line them up as best you can to get a full view of the controller
+
+Once you have your printed template(s), use it to plan your art before placing it under your controller's art layer
+
+![Art Template 1|center|360x540](https://github.com/prilosac/LemeTechOne-Firmware/blob/48f14a59e4a661f842977e94d02ef02927c6b9f3/img/angles.gif)
+![Art Template 2|center|360x540](https://github.com/prilosac/LemeTechOne-Firmware/blob/48f14a59e4a661f842977e94d02ef02927c6b9f3/img/angles.gif)
