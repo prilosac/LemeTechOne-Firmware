@@ -55,7 +55,7 @@ Note that if you want to use 2-modifier mode, Mod Z can be used as an additional
 Additionally, any 2-modifier players that are also avid UnclePunch users may be happy to know that holding all 3 modifiers when plugging in will result in 2-modifier behaviour with ModZ acting as a dedicate D-pad left. In this mode, press all 3 modifiers to access the D-pad layer, like you would in 3-mod mode.
 
 ## Dolphin setup
-Your Leme Tech One, being based on HayBox, needs a Dolphin controller profile to be setup for use. These profiles can be found in the dolphin folder in this repo. The profile files are named to indicate what communication backend and operating system they are for:
+Your Leme Tech One, being based on HayBox, needs a Dolphin controller profile to be setup for use. These profiles can be found in the dolphin folder in this repo or along with the latest release. The profile files are named to indicate what communication backend and operating system they are for:
 
 * For Windows:
     * HayBox_XInput.ini - For Pico/RP2040-based controllers (e.g. B0XX R4)
