@@ -38,7 +38,7 @@ Our goal was to simplify angle access for techniques like Firefox while at the s
 
 This results in 7 levels of granularity per quadrant, all of which are easily accessible at all times. Compare this to other controllers, which provide 11 levels of granularity per quadrant with the C-stick, and 3 without it. We believe that using the C-stick for many techniques such as wavedash, while not impossible, is both awkward and more difficult than necessary, and find that the trade-off of a reasonable range of static options is preferable to more options in some situations and fewer options in others.
 
-![Angle Helper|center|360x540](helperimage.png)
+![Angle Helper|center|360x540](https://github.com/prilosac/LemeTechOne-Firmware/blob/48f14a59e4a661f842977e94d02ef02927c6b9f3/img/angles.gif)
 ## 2-modifier mode
 While this controller offers a new way to play Melee using 3 modifiers with pairwise interaction, some players may wish to use the 2-modifier layout more typical of this style of controller. To achieve this in Melee mode, hold both ModX and ModY when plugging in. You will then find yourself with default 2-modifier behaviour, with ModZ now acting as a dedicated d-pad toggle. This means that ModX and ModY remain availble for use while the d-pad layer is active.
 
@@ -98,4 +98,4 @@ Your Leme Tech Zero features a clear top insert that can optionally act as a cus
 
 Be aware that the bolts go all the way through to the bottom of the case and connect with nuts to hold the bottom plate in place too, so don't be alarmed if the bottom panel shifts slightly while you do this. Make sure to slot the nuts back through the bottom panel to ensure a snug fit before re-tightening.
 
-![Art Example|center|480x528](artandglossymattedisplay.png)
+![Art Example|center|480x528](https://github.com/prilosac/LemeTechOne-Firmware/blob/48f14a59e4a661f842977e94d02ef02927c6b9f3/img/artandglossymattedisplay.png)
