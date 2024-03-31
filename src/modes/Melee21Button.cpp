@@ -95,14 +95,16 @@ void Melee21Button::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs
 
     if (directions.diagonal) {
         // q1/2 = 7000 7000
+        //outputs.leftStickX = 128 + (directions.x * 56);
+        //outputs.leftStickY = 128 + (directions.y * 61);
         outputs.leftStickX = 128 + (directions.x * 56);
-        outputs.leftStickY = 128 + (directions.y * 61);
+        outputs.leftStickY = 128 + (directions.y * 56);
         // L, R, LS, and MS + q3/4 = 7000 6875 (For vanilla shield drop. Gives 44.5
         // degree wavedash). Also used as default q3/4 diagonal if crouch walk option select is
         // enabled.
-        if (directions.y == -1 && (shield_button_pressed || _options.crouch_walk_os)) {
-            outputs.leftStickX = 128 + (directions.x * 61);
-            outputs.leftStickY = 128 + (directions.y * 56);
+        if (directions.y == -1 && _options.crouch_walk_os) {
+            outputs.leftStickX = 128 + (directions.x * 57);
+            outputs.leftStickY = 128 + (directions.y * 55);
         }
     }
 
