@@ -38,9 +38,9 @@ Our goal was to simplify angle access for techniques like Firefox while at the s
 
 This results in 7 levels of granularity per quadrant, all of which are easily accessible at all times. Compare this to other controllers, which provide 11 levels of granularity per quadrant with the C-stick, and 3 without it. We believe that using the C-stick for many techniques such as wavedash, while not impossible, is both awkward and more difficult than necessary, and find that the trade-off of a reasonable range of static options is preferable to more options in some situations and fewer options in others.
 
-<center>
+<p align="center">
     <img src="/img/angles.gif" alt="Angle Helper"/>
-</center>
+</p>
 
 Note that in 3-mod mode, all 3 modifiers should be pressed to access the d-pad layer.
 
@@ -101,9 +101,9 @@ Make sure you know what you are uploading to your controller to prevent any unex
 
 # Art layer
 
-<center>
+<p align="center">
     <img src="/img/artandglossymattedisplay.png" alt="Art Example" width="480"/>
-</center>
+</p>
 
 Your Leme Tech Zero features a clear top insert that can optionally act as a customizable art layer! Loosen the 5 bolts with a 3mm hex wrench, lift the clear panel, and place any art you desire under it before completing the steps in reverse to put it back.
 
@@ -115,10 +115,10 @@ The following templates can be used to help plan out artwork without having to d
 
 Once you have your printed template(s), use it to plan your art before placing it under your controller's art layer
 
-<center>
+<p align="center">
     <img src="/img/arttemplate1.png" alt="Art Template 1" />
-</center>
-<center>
+</p>
+<p align="center">
     <img src="/img/arttemplate2.png" alt="Art Template 2" />
-</center>
+</p>
 
