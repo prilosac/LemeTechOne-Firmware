@@ -3,6 +3,7 @@
 * [QuickStart](#quickstart)
 * [Playing with 3 modifiers](#playing-with-3-modifiers)
 * [2-modifier mode](#2-modifier-mode)
+* [Dolphin setup](#dolphin-setup)
 * [Controller Behavior](#controller-behavior)
 	* [Backends](backends)
 	* [Game logic](#game-logic)
@@ -11,7 +12,7 @@
 * [Art layer](#art-layer)
 
 ## QuickStart
-Your Leme Tech One will automatically work when plugged into any compatible console (GameCube, Wii, Switch, PC), defaulting to Melee-style behavior, as described in [Playing with 3 modifiers](#playing-with-3-modifiers). If you wish to play with the 2-modifier layout typical of other controllers with a similar layout, hold ModX and ModY when plugging in.
+Your Leme Tech One will automatically work when plugged into any compatible console (GameCube, Wii, Switch, PC), defaulting to Melee-style behavior, as described in [Playing with 3 modifiers](#playing-with-3-modifiers). When plugging into PC for the first time, you will need to do the initial [Dolphin setup](#dolphin-setup) If you wish to play with the 2-modifier layout typical of other controllers with a similar layout, hold ModX and ModY when plugging in.
 
 In either case, hold Up when plugging in to activate the crouch-walk option select coordinates on down-left and down-right.
 
@@ -52,6 +53,35 @@ If you are already plugged in and wish to switch to 2-modifier Melee mode, hold 
 Note that if you want to use 2-modifier mode, Mod Z can be used as an additional button for whatever you want! For example, you could put one of your jump buttons on the thumb to help with techniques like Peach's hyperfloats. See [Remapping](#remapping) for more information.
 
 Additionally, any 2-modifier players that are also avid UnclePunch users may be happy to know that holding all 3 modifiers when plugging in will result in 2-modifier behaviour with ModZ acting as a dedicate D-pad left. In this mode, press all 3 modifiers to access the D-pad layer, like you would in 3-mod mode.
+
+## Dolphin setup
+Your Leme Tech One, being based on HayBox, needs a Dolphin controller profile to be setup for use. These profiles can be found in the dolphin folder in this repo. The profile files are named to indicate what communication backend and operating system they are for:
+
+* For Windows:
+    * HayBox_XInput.ini - For Pico/RP2040-based controllers (e.g. B0XX R4)
+    * HayBox_DInput.ini - For Arduino/AVR-based controllers (e.g. B0XX R1-3, LBX)
+For Linux:
+    * HayBox_XInput_Linux.ini - For Pico/RP2040-based controllers (e.g. B0XX R4)
+    * HayBox_DInput_Linux.ini - For Arduino/AVR-based controllers (e.g. B0XX R1-3, LBX)
+For macOS (unsupported*):
+    * HayBox_DInput_macOS.ini
+
+To install the profile:
+
+1) Copy the appropriate .ini file to the folder <YourDolphinInstallation>\User\Config\Profiles\GCPad\ (create it if it does not exist)
+* For Slippi this should be
+    * On Windows: %appdata%\Slippi Launcher\netplay\User\Config\Profiles\GCPad\
+    * On Linux: ~/.config/SlippiOnline/Config/Profiles/GCPad/
+    * On Mac: Cmd + Shift + G and enter the path /Users/<USER>/Library/Application Support/Slippi Launcher/netplay/Slippi Dolphin.app/Contents/Resources/Sys/Config/Profiles/GCPad
+* For vanilla Dolphin:
+    * On Windows: %userprofile%\Documents\Dolphin Emulator\Config\Profiles\GCPad\
+    * On Linux: ~/.config/dolphin-emu/Profiles/GCPad/
+2) Plug in your controller, and configure a "Standard Controller" in Dolphin
+3) Click Refresh next to the Device dropdown
+4) Select the HayBox profile from the profile dropdown, and click Load (NOT Save)
+5) Make sure the correct device is selected in the device dropdown
+6) Click Close
+* macOS only supports DInput (and not very well), so if using a Pico/RP2040-based controller you will have to force DInput mode by holding Z on plugin, and even then it may not work. It may work, but this will be considered unsupported usage.
 
 ## Controller behavior
 There are multiple modes in which the controller can be used, as well as various options within many of the modes. There are two aspects to this:
