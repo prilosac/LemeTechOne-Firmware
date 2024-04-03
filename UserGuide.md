@@ -7,6 +7,7 @@
 * [Controller Behavior](#controller-behavior)
 	* [Backends](backends)
 	* [Game logic](#game-logic)
+* [Layout Reference](#layout-reference)
 * [Remapping](#remapping)
 * [Reprogramming](#reprogramming)
 * [Art layer](#art-layer)
@@ -29,6 +30,8 @@ After plugging in, you can change modes without unplugging. This gives access to
 | ModX + Start + Down     | Ultimate                        |
 | ModX + Start + Right    | FGC Mode (Hitbox-style)         |
 | ModX + Start + B        | Rivals of Aether                |
+
+Your Leme Tech One is also compatible with Brook's [Wingman FGC](https://www.brookaccessory.com/products/wingmanfgc/index.html)! To use it, hold Mod X when plugging in, and play your favorite FGC games with the same controller!
 
 See [Controller Behavior](#controller-behavior) for more details about different backends and game modes. 
 
@@ -55,15 +58,15 @@ Note that if you want to use 2-modifier mode, Mod Z can be used as an additional
 Additionally, any 2-modifier players that are also avid UnclePunch users may be happy to know that holding all 3 modifiers when plugging in will result in 2-modifier behaviour with ModZ acting as a dedicate D-pad left. In this mode, press all 3 modifiers to access the D-pad layer, like you would in 3-mod mode.
 
 ## Dolphin setup
-Your Leme Tech One, being based on HayBox, needs a Dolphin controller profile to be setup for use. These profiles can be found in the dolphin folder in this repo or along with the latest release. The profile files are named to indicate what communication backend and operating system they are for:
+Your Leme Tech One, being based on HayBox, needs a Dolphin controller profile to be setup for use. These profiles can be found in the dolphin folder in this repo or along with the latest release. The profile files are named to indicate what communication backend and operating system they are for. You should use XInput if possible, only using DInput if XInput doesn't work for your game or system:
 
 * For Windows:
-    * HayBox_XInput.ini - For Pico/RP2040-based controllers (e.g. B0XX R4)
-    * HayBox_DInput.ini - For Arduino/AVR-based controllers (e.g. B0XX R1-3, LBX)
-For Linux:
-    * HayBox_XInput_Linux.ini - For Pico/RP2040-based controllers (e.g. B0XX R4)
-    * HayBox_DInput_Linux.ini - For Arduino/AVR-based controllers (e.g. B0XX R1-3, LBX)
-For macOS (unsupported*):
+    * HayBox_XInput.ini
+    * HayBox_DInput.ini
+* For Linux:
+    * HayBox_XInput_Linux.ini
+    * HayBox_DInput_Linux.ini
+* For macOS (unsupported\*):
     * HayBox_DInput_macOS.ini
 
 To install the profile:
@@ -81,7 +84,7 @@ To install the profile:
 4) Select the HayBox profile from the profile dropdown, and click Load (NOT Save)
 5) Make sure the correct device is selected in the device dropdown
 6) Click Close
-* macOS only supports DInput (and not very well), so if using a Pico/RP2040-based controller you will have to force DInput mode by holding Z on plugin, and even then it may not work. It may work, but this will be considered unsupported usage.
+* macOS only supports DInput (and not very well), so you will have to force DInput mode by holding Z on plugin, and even then it may not work. It may work, but this will be considered unsupported usage.
 
 ## Controller behavior
 There are multiple modes in which the controller can be used, as well as various options within many of the modes. There are two aspects to this:
@@ -90,15 +93,17 @@ There are multiple modes in which the controller can be used, as well as various
 ### Backends
 In most cases, your controller will automatically determine which backend mode to use. See the table below for full information on the backend your controller will use in various scenarios, and when you might want to override it.
 
-| Console                | Button Hold | Backend         | Reason                                                                        |
-| ---------------------- | ----------- | --------------- | ----------------------------------------------------------------------------- |
-| Wii                    | -           | GameCube        | default, best in most cases                                                   |
-| GameCube               | -           | GameCube        | default, best in most cases                                                   |
-| Switch (adapter)       | -           | GameCube        | default, best in most cases                                                   |
-| Switch<br>(direct USB) | X           | Switch USB mode | Plugging directly into Switch USB (also sets controller behavior to Ultimate) |
-| N64                    | -           | N64             | default, best in most cases                                                   |
-| PC                     | -           | XInput          | default, best for most games                                                  |
-| PC                     | Z           | DInput          | XInput doesn't work for your game                                             |
+| Console                       | Button Hold | Backend         | Reason                                                                        |
+| ----------------------------- | ----------- | --------------- | ----------------------------------------------------------------------------- |
+| Wii                           | -           | GameCube        | default, best in most cases                                                   |
+| GameCube                      | -           | GameCube        | default, best in most cases                                                   |
+| Switch (adapter)              | -           | GameCube        | default, best in most cases                                                   |
+| Switch<br>(direct USB)        | X           | Switch USB mode | Plugging directly into Switch USB (also sets controller behavior to Ultimate) |
+| N64                           | -           | N64             | default, best in most cases                                                   |
+| PC                            | -           | XInput          | default, best for most games                                                  |
+| PC                            | Z           | DInput          | XInput doesn't work for your game                                             |
+| PS5/PS4/etc.<br>(Wingman FGC) | Mod X       | Switch USB mode | Using Wingman FGC to play on other consoles (sets the controller to FGC mode) |
+
 ### Game logic
 Your Leme Tech One will automatically work when plugged into any compatible console (GameCube, Wii, Switch, PC), defaulting to Melee-style behavior, as described in [Playing with 3 modifiers](#playing-with-3-modifiers). If you wish to play with the 2-modifier layout typical of other controllers with a similar layout, hold ModX and ModY when plugging in.
 
@@ -116,6 +121,17 @@ After plugging in the controller, use the following button holds to switch betwe
 | ModX + Start + Right    | FGC Mode (Hitbox-style)                      |
 | ModX + Start + B        | Rivals of Aether                             |
 | ModY + Start            | Keyboard (controller must be in DInput mode) |
+
+## Layout Reference
+Standard:
+<p align="center">
+    <img src="/img/lemetechonelayout.png" alt="Standard Layout" width="480"/>
+</p>
+FGC:
+<p align="center">
+    <img src="/img/lemetechonelayoutFGC.png" alt="FGC Layout" width="480"/>
+</p>
+
 ## Remapping
 Remapping can be achieved by downloading the code, changing the mappings in `config/lemetechone/config.cpp`, building the firmware, and then following the instructions in [Reprogramming](#reprogramming). Instructions for building the firmware can be found [in the README](README.md#building-from-source).
 
