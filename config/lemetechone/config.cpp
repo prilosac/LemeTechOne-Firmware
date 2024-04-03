@@ -109,6 +109,17 @@ void setup() {
             // Default to Ultimate mode on Switch.
             primary_backend->SetGameMode(new Ultimate(socd::SOCD_2IP, { .mod_z_dpad_left = false } ));
             return;
+        }
+        else if (button_holds.mod_x) {
+            // If no console detected and ModX is held on plugin then use Switch USB backend in FGC mode for Wingman
+            NintendoSwitchBackend::RegisterDescriptor();
+            backend_count = 1;
+            primary_backend = new NintendoSwitchBackend(input_sources, input_source_count);
+            backends = new CommunicationBackend *[backend_count] { primary_backend };
+
+            // Default to FGC mode.
+            primary_backend->SetGameMode(new FgcMode(socd::SOCD_NEUTRAL, socd::SOCD_NEUTRAL));
+            return;
         } else if (button_holds.z) {
             // If no console detected and Z is held on plugin then use DInput backend.
             TUGamepad::registerDescriptor();
