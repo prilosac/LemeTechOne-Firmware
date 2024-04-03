@@ -36,12 +36,12 @@ void select_mode(CommunicationBackend *backend) {
         if (inputs.l) {
             set_mode(
                 backend,
-                new Melee21Button(socd::SOCD_2IP_NO_REAC, { .crouch_walk_os = inputs.up, .mod_z_dpad_left = false, .pairwise_modifiers = true })
+                new Melee21Button(socd::SOCD_NEUTRAL, { .crouch_walk_os = inputs.up, .mod_z_dpad_left = false, .pairwise_modifiers = true })
             );
         } else if (inputs.r) {
             set_mode(
                 backend,
-                new Melee21Button(socd::SOCD_2IP_NO_REAC, { .crouch_walk_os = inputs.up, .mod_z_dpad_left = false, .pairwise_modifiers = false })
+                new Melee21Button(socd::SOCD_NEUTRAL, { .crouch_walk_os = inputs.up, .mod_z_dpad_left = false, .pairwise_modifiers = false })
             );
         } else if (inputs.left) {
             set_mode(
